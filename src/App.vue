@@ -20,20 +20,17 @@ import ControlPanel from './components/ControlPanel.vue';
 import GoldChart from './components/GoldChart.vue';
 import EventModal from './components/EventModal.vue';
 
+// 🌟 匯入我們剛剛從資料庫轉出來的完整 JSON 檔案！
+import realGoldData from './gold_data.json'; 
+
 const rawData = ref([]);
 const filters = ref({ keyword: '', startDate: '', endDate: '' });
 const isModalOpen = ref(false);
 const selectedEvent = ref({});
 
-// 讀取 public/events.json 靜態資料
-onMounted(async () => {
-  try {
-    const res = await fetch('./events.json');
-    const data = await res.json();
-    rawData.value = data.sort((a, b) => new Date(a.date) - new Date(b.date));
-  } catch (err) {
-    console.error('載入資料失敗:', err);
-  }
+onMounted(() => {
+  // 直接將真實資料放進去，並確保依照日期排序由舊到新
+  rawData.value = realGoldData.sort((a, b) => new Date(a.date) - new Date(b.date));
 });
 
 // 更新篩選條件
