@@ -4,7 +4,6 @@ on:
   push:
     branches: ['main']
 
-# 設定機器人的最高權限，確保它能直接寫入網頁
 permissions:
   contents: read
   pages: write
