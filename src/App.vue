@@ -14,6 +14,7 @@
   </div>
 </template>
 
+
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import ControlPanel from './components/ControlPanel.vue';
